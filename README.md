@@ -987,12 +987,12 @@
             const preguntasMixtas = [];
             const categorias = ['historia', 'ciencia', 'arte', 'geografia', 'matematicas', 'ingles'];
             
-            // Tomar 2 preguntas de cada categoría (total 12, pero usaremos 10)
+            // Tomar preguntas de cada categoría
             categorias.forEach(categoria => {
                 const preguntasCategoria = [...preguntasBase[categoria]];
                 mezclarPreguntas(preguntasCategoria);
                 
-                // Tomar 2 preguntas de cada categoría
+                // Tomar preguntas de cada categoría
                 for (let i = 0; i < 2 && preguntasCategoria.length > 0; i++) {
                     const pregunta = preguntasCategoria.pop();
                     preguntasMixtas.push(mezclarOpciones(pregunta));
@@ -1246,9 +1246,11 @@
         function siguientePregunta() {
             preguntaActual++;
             
+            // CORRECCIÓN: Verificar si es la última pregunta
             if (preguntaActual < preguntasActuales.length) {
                 mostrarPregunta();
             } else {
+                // Si es la última pregunta, terminar el juego
                 terminarJuego();
             }
         }
