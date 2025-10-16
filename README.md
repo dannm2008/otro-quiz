@@ -496,6 +496,11 @@
             <p>Selecciona una categoría para comenzar. Tienes 15 segundos por pregunta.</p>
             
             <div class="categorias">
+                <div class="categoria" data-categoria="mixta">
+                    <div class="icono">🎲</div>
+                    <h3>Preguntas Mixtas</h3>
+                    <p>10 preguntas de todas las categorías</p>
+                </div>
                 <div class="categoria" data-categoria="historia">
                     <div class="icono">📜</div>
                     <h3>Historia</h3>
@@ -600,318 +605,318 @@
     </audio>
 
     <script>
-        // Base de datos de preguntas por categoría SIN IMÁGENES
-        const preguntas = {
+        // Base de datos de preguntas por categoría
+        const preguntasBase = {
             historia: [
                 {
                     pregunta: "¿En qué año cayó el Imperio Romano de Occidente?",
-                    opciones: ["476 d.C.", "410 d.C.", "1453 d.C.", "312 d.C."],
-                    correcta: 0
+                    opciones: ["410 d.C.", "476 d.C.", "1453 d.C.", "312 d.C."],
+                    correcta: 1
                 },
                 {
                     pregunta: "¿Quién descubrió América en 1492?",
-                    opciones: ["Cristóbal Colón", "Vasco da Gama", "Fernando de Magallanes", "Américo Vespucio"],
-                    correcta: 0
+                    opciones: ["Vasco da Gama", "Cristóbal Colón", "Fernando de Magallanes", "Américo Vespucio"],
+                    correcta: 1
                 },
                 {
                     pregunta: "¿En qué año comenzó la Primera Guerra Mundial?",
-                    opciones: ["1914", "1918", "1939", "1945"],
-                    correcta: 0
+                    opciones: ["1918", "1939", "1914", "1945"],
+                    correcta: 2
                 },
                 {
                     pregunta: "¿Quién fue el primer presidente de los Estados Unidos?",
-                    opciones: ["George Washington", "Thomas Jefferson", "Abraham Lincoln", "John Adams"],
-                    correcta: 0
+                    opciones: ["Thomas Jefferson", "Abraham Lincoln", "George Washington", "John Adams"],
+                    correcta: 2
                 },
                 {
                     pregunta: "¿Qué civilización construyó Machu Picchu?",
-                    opciones: ["Inca", "Maya", "Azteca", "Olmeca"],
-                    correcta: 0
+                    opciones: ["Maya", "Azteca", "Inca", "Olmeca"],
+                    correcta: 2
                 },
                 {
                     pregunta: "¿En qué año se firmó la Declaración de Independencia de los Estados Unidos?",
-                    opciones: ["1776", "1789", "1812", "1492"],
-                    correcta: 0
+                    opciones: ["1789", "1812", "1492", "1776"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Quién pintó la Mona Lisa?",
-                    opciones: ["Leonardo da Vinci", "Miguel Ángel", "Rafael", "Donatello"],
-                    correcta: 0
+                    opciones: ["Miguel Ángel", "Rafael", "Leonardo da Vinci", "Donatello"],
+                    correcta: 2
                 },
                 {
                     pregunta: "¿Qué imperio fue gobernado por Julio César?",
-                    opciones: ["Imperio Romano", "Imperio Bizantino", "Imperio Otomano", "Imperio Mongol"],
-                    correcta: 0
+                    opciones: ["Imperio Bizantino", "Imperio Otomano", "Imperio Romano", "Imperio Mongol"],
+                    correcta: 2
                 },
                 {
                     pregunta: "¿En qué año terminó la Segunda Guerra Mundial?",
-                    opciones: ["1945", "1939", "1918", "1950"],
-                    correcta: 0
+                    opciones: ["1939", "1918", "1950", "1945"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Quién fue el primer hombre en pisar la Luna?",
-                    opciones: ["Neil Armstrong", "Buzz Aldrin", "Yuri Gagarin", "Alan Shepard"],
-                    correcta: 0
+                    opciones: ["Buzz Aldrin", "Yuri Gagarin", "Alan Shepard", "Neil Armstrong"],
+                    correcta: 3
                 }
             ],
             ciencia: [
                 {
                     pregunta: "¿Cuál es el elemento más abundante en el universo?",
-                    opciones: ["Hidrógeno", "Oxígeno", "Carbono", "Helio"],
-                    correcta: 0
+                    opciones: ["Oxígeno", "Carbono", "Hidrógeno", "Helio"],
+                    correcta: 2
                 },
                 {
                     pregunta: "¿Quién formuló la teoría de la relatividad?",
-                    opciones: ["Albert Einstein", "Isaac Newton", "Stephen Hawking", "Galileo Galilei"],
-                    correcta: 0
+                    opciones: ["Isaac Newton", "Stephen Hawking", "Albert Einstein", "Galileo Galilei"],
+                    correcta: 2
                 },
                 {
                     pregunta: "¿Cuál es el planeta más grande del sistema solar?",
-                    opciones: ["Júpiter", "Saturno", "Neptuno", "Urano"],
-                    correcta: 0
+                    opciones: ["Saturno", "Neptuno", "Urano", "Júpiter"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Qué científico descubrió la penicilina?",
-                    opciones: ["Alexander Fleming", "Louis Pasteur", "Marie Curie", "Robert Koch"],
-                    correcta: 0
+                    opciones: ["Louis Pasteur", "Marie Curie", "Robert Koch", "Alexander Fleming"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Cuál es la unidad básica de la vida?",
-                    opciones: ["La célula", "El átomo", "La molécula", "El gen"],
-                    correcta: 0
+                    opciones: ["El átomo", "La molécula", "El gen", "La célula"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Qué partícula subatómica tiene carga positiva?",
-                    opciones: ["Protón", "Electrón", "Neutrón", "Fotón"],
-                    correcta: 0
+                    opciones: ["Electrón", "Neutrón", "Fotón", "Protón"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Qué gas necesitan las plantas para realizar la fotosíntesis?",
-                    opciones: ["Dióxido de carbono", "Oxígeno", "Nitrógeno", "Hidrógeno"],
-                    correcta: 0
+                    opciones: ["Oxígeno", "Nitrógeno", "Hidrógeno", "Dióxido de carbono"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Cuál es el hueso más largo del cuerpo humano?",
-                    opciones: ["Fémur", "Tibia", "Húmero", "Radio"],
-                    correcta: 0
+                    opciones: ["Tibia", "Húmero", "Radio", "Fémur"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Qué planeta es conocido como el planeta rojo?",
-                    opciones: ["Marte", "Júpiter", "Venus", "Saturno"],
-                    correcta: 0
+                    opciones: ["Júpiter", "Venus", "Saturno", "Marte"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Qué tipo de animal es una ballena?",
-                    opciones: ["Mamífero", "Pez", "Reptil", "Anfibio"],
-                    correcta: 0
+                    opciones: ["Pez", "Reptil", "Anfibio", "Mamífero"],
+                    correcta: 3
                 }
             ],
             arte: [
                 {
                     pregunta: "¿Quién pintó 'La noche estrellada'?",
-                    opciones: ["Vincent van Gogh", "Pablo Picasso", "Claude Monet", "Salvador Dalí"],
-                    correcta: 0
+                    opciones: ["Pablo Picasso", "Claude Monet", "Salvador Dalí", "Vincent van Gogh"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿En qué ciudad se encuentra el Museo del Prado?",
-                    opciones: ["Madrid", "Barcelona", "París", "Roma"],
-                    correcta: 0
+                    opciones: ["Barcelona", "París", "Roma", "Madrid"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Quién es el autor de 'Don Quijote de la Mancha'?",
-                    opciones: ["Miguel de Cervantes", "Federico García Lorca", "Gabriel García Márquez", "Pablo Neruda"],
-                    correcta: 0
+                    opciones: ["Federico García Lorca", "Gabriel García Márquez", "Pablo Neruda", "Miguel de Cervantes"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Qué compositor es conocido como 'El rey del vals'?",
-                    opciones: ["Johann Strauss II", "Wolfgang Amadeus Mozart", "Ludwig van Beethoven", "Johann Sebastian Bach"],
-                    correcta: 0
+                    opciones: ["Wolfgang Amadeus Mozart", "Ludwig van Beethoven", "Johann Sebastian Bach", "Johann Strauss II"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Qué escultor creó 'El David'?",
-                    opciones: ["Miguel Ángel", "Donatello", "Leonardo da Vinci", "Bernini"],
-                    correcta: 0
+                    opciones: ["Donatello", "Leonardo da Vinci", "Bernini", "Miguel Ángel"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿En qué período artístico se encuentra el Renacimiento?",
-                    opciones: ["Siglos XV y XVI", "Siglo XIX", "Siglo XVIII", "Siglo XX"],
-                    correcta: 0
+                    opciones: ["Siglo XIX", "Siglo XVIII", "Siglo XX", "Siglos XV y XVI"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Quién escribió 'Romeo y Julieta'?",
-                    opciones: ["William Shakespeare", "Charles Dickens", "Jane Austen", "Mark Twain"],
-                    correcta: 0
+                    opciones: ["Charles Dickens", "Jane Austen", "Mark Twain", "William Shakespeare"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Qué pintor es conocido por sus obras de latas de sopa Campbell?",
-                    opciones: ["Andy Warhol", "Roy Lichtenstein", "Jackson Pollock", "Keith Haring"],
-                    correcta: 0
+                    opciones: ["Roy Lichtenstein", "Jackson Pollock", "Keith Haring", "Andy Warhol"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Qué arquitecto diseñó la Sagrada Familia en Barcelona?",
-                    opciones: ["Antoni Gaudí", "Frank Lloyd Wright", "Le Corbusier", "Zaha Hadid"],
-                    correcta: 0
+                    opciones: ["Frank Lloyd Wright", "Le Corbusier", "Zaha Hadid", "Antoni Gaudí"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Quién compuso 'La Quinta Sinfonía'?",
-                    opciones: ["Ludwig van Beethoven", "Wolfgang Amadeus Mozart", "Johann Sebastian Bach", "Franz Schubert"],
-                    correcta: 0
+                    opciones: ["Wolfgang Amadeus Mozart", "Johann Sebastian Bach", "Franz Schubert", "Ludwig van Beethoven"],
+                    correcta: 3
                 }
             ],
             geografia: [
                 {
                     pregunta: "¿Cuál es el río más largo del mundo?",
-                    opciones: ["Amazonas", "Nilo", "Misisipi", "Yangtsé"],
-                    correcta: 0
+                    opciones: ["Nilo", "Misisipi", "Yangtsé", "Amazonas"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Cuál es el país más grande del mundo por superficie?",
-                    opciones: ["Rusia", "Canadá", "China", "Estados Unidos"],
-                    correcta: 0
+                    opciones: ["Canadá", "China", "Estados Unidos", "Rusia"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿En qué continente se encuentra Egipto?",
-                    opciones: ["África", "Asia", "Europa", "América"],
-                    correcta: 0
+                    opciones: ["Asia", "Europa", "América", "África"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Cuál es la capital de Australia?",
-                    opciones: ["Canberra", "Sídney", "Melbourne", "Brisbane"],
-                    correcta: 0
+                    opciones: ["Sídney", "Melbourne", "Brisbane", "Canberra"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Qué montaña es la más alta del mundo?",
-                    opciones: ["Monte Everest", "K2", "Monte Kilimanjaro", "Aconcagua"],
-                    correcta: 0
+                    opciones: ["K2", "Monte Kilimanjaro", "Aconcagua", "Monte Everest"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Qué océano es el más grande?",
-                    opciones: ["Pacífico", "Atlántico", "Índico", "Ártico"],
-                    correcta: 0
+                    opciones: ["Atlántico", "Índico", "Ártico", "Pacífico"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Cuál es el desierto más grande del mundo?",
-                    opciones: ["Antártida", "Sahara", "Gobi", "Kalahari"],
-                    correcta: 0
+                    opciones: ["Sahara", "Gobi", "Kalahari", "Antártida"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿En qué país se encuentra la Torre Eiffel?",
-                    opciones: ["Francia", "Italia", "España", "Alemania"],
-                    correcta: 0
+                    opciones: ["Italia", "España", "Alemania", "Francia"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Qué país tiene forma de bota?",
-                    opciones: ["Italia", "Grecia", "España", "Portugal"],
-                    correcta: 0
+                    opciones: ["Grecia", "España", "Portugal", "Italia"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Cuál es la capital de Japón?",
-                    opciones: ["Tokio", "Kioto", "Osaka", "Hiroshima"],
-                    correcta: 0
+                    opciones: ["Kioto", "Osaka", "Hiroshima", "Tokio"],
+                    correcta: 3
                 }
             ],
             matematicas: [
                 {
                     pregunta: "¿Cuál es el resultado de 15 + 27?",
-                    opciones: ["42", "32", "52", "37"],
-                    correcta: 0
+                    opciones: ["32", "52", "37", "42"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Cuánto es 8 x 7?",
-                    opciones: ["56", "64", "48", "72"],
-                    correcta: 0
+                    opciones: ["64", "48", "72", "56"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Qué número es primo?",
-                    opciones: ["17", "15", "21", "27"],
-                    correcta: 0
+                    opciones: ["15", "21", "27", "17"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Cuál es la raíz cuadrada de 64?",
-                    opciones: ["8", "6", "7", "9"],
-                    correcta: 0
+                    opciones: ["6", "7", "9", "8"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Qué fracción es equivalente a 0.75?",
-                    opciones: ["3/4", "1/2", "2/3", "4/5"],
-                    correcta: 0
+                    opciones: ["1/2", "2/3", "4/5", "3/4"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Cuál es el área de un cuadrado de lado 5 cm?",
-                    opciones: ["25 cm²", "20 cm²", "30 cm²", "10 cm²"],
-                    correcta: 0
+                    opciones: ["20 cm²", "30 cm²", "10 cm²", "25 cm²"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Qué valor tiene π (pi) aproximadamente?",
-                    opciones: ["3.1416", "2.7182", "1.6180", "3.2654"],
-                    correcta: 0
+                    opciones: ["2.7182", "1.6180", "3.2654", "3.1416"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Cuántos grados tiene un triángulo equilátero?",
-                    opciones: ["180°", "90°", "360°", "270°"],
-                    correcta: 0
+                    opciones: ["90°", "360°", "270°", "180°"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Qué número sigue en la secuencia: 2, 4, 8, 16, ...?",
-                    opciones: ["32", "24", "20", "30"],
-                    correcta: 0
+                    opciones: ["24", "20", "30", "32"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Cuánto es 100 ÷ 4?",
-                    opciones: ["25", "20", "30", "40"],
-                    correcta: 0
+                    opciones: ["20", "30", "40", "25"],
+                    correcta: 3
                 }
             ],
             ingles: [
                 {
                     pregunta: "¿Cómo se dice 'hola' en inglés?",
-                    opciones: ["Hello", "Goodbye", "Please", "Thank you"],
-                    correcta: 0
+                    opciones: ["Goodbye", "Please", "Thank you", "Hello"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Cuál es el plural de 'child'?",
-                    opciones: ["Children", "Childs", "Childes", "Childen"],
-                    correcta: 0
+                    opciones: ["Childs", "Childes", "Childen", "Children"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Qué significa 'apple' en español?",
-                    opciones: ["Manzana", "Naranja", "Plátano", "Pera"],
-                    correcta: 0
+                    opciones: ["Naranja", "Plátano", "Pera", "Manzana"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Cuál es el pasado simple de 'go'?",
-                    opciones: ["Went", "Goed", "Gone", "Going"],
-                    correcta: 0
+                    opciones: ["Goed", "Gone", "Going", "Went"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Cómo se dice 'gracias' en inglés?",
-                    opciones: ["Thank you", "Please", "Sorry", "Hello"],
-                    correcta: 0
+                    opciones: ["Please", "Sorry", "Hello", "Thank you"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Qué pronombre personal corresponde a 'ellos'?",
-                    opciones: ["They", "We", "You", "He"],
-                    correcta: 0
+                    opciones: ["We", "You", "He", "They"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Cuál es el comparativo de 'good'?",
-                    opciones: ["Better", "Gooder", "More good", "Best"],
-                    correcta: 0
+                    opciones: ["Gooder", "More good", "Best", "Better"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Qué palabra significa 'libro' en inglés?",
-                    opciones: ["Book", "Look", "Cook", "Hook"],
-                    correcta: 0
+                    opciones: ["Look", "Cook", "Hook", "Book"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Cómo se forma el presente continuo en inglés?",
-                    opciones: ["Verbo to be + gerundio", "Verbo + ed", "Have + participio", "Will + verbo"],
-                    correcta: 0
+                    opciones: ["Verbo + ed", "Have + participio", "Will + verbo", "Verbo to be + gerundio"],
+                    correcta: 3
                 },
                 {
                     pregunta: "¿Qué significa 'house' en español?",
-                    opciones: ["Casa", "Caballo", "Hombre", "Hospital"],
-                    correcta: 0
+                    opciones: ["Caballo", "Hombre", "Hospital", "Casa"],
+                    correcta: 3
                 }
             ]
         };
@@ -955,6 +960,49 @@
         const clickSound = document.getElementById('click-sound');
         const correctSound = document.getElementById('correct-sound');
         const wrongSound = document.getElementById('wrong-sound');
+
+        // Función para mezclar opciones aleatoriamente
+        function mezclarOpciones(pregunta) {
+            const opcionesMezcladas = [...pregunta.opciones];
+            const respuestaCorrecta = opcionesMezcladas[pregunta.correcta];
+            
+            // Mezclar las opciones
+            for (let i = opcionesMezcladas.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [opcionesMezcladas[i], opcionesMezcladas[j]] = [opcionesMezcladas[j], opcionesMezcladas[i]];
+            }
+            
+            // Encontrar la nueva posición de la respuesta correcta
+            const nuevaCorrecta = opcionesMezcladas.indexOf(respuestaCorrecta);
+            
+            return {
+                pregunta: pregunta.pregunta,
+                opciones: opcionesMezcladas,
+                correcta: nuevaCorrecta
+            };
+        }
+
+        // Función para crear categoría mixta
+        function crearCategoriaMixta() {
+            const preguntasMixtas = [];
+            const categorias = ['historia', 'ciencia', 'arte', 'geografia', 'matematicas', 'ingles'];
+            
+            // Tomar preguntas de cada categoría
+            categorias.forEach(categoria => {
+                const preguntasCategoria = [...preguntasBase[categoria]];
+                mezclarPreguntas(preguntasCategoria);
+                
+                // Tomar preguntas de cada categoría
+                for (let i = 0; i < 2 && preguntasCategoria.length > 0; i++) {
+                    const pregunta = preguntasCategoria.pop();
+                    preguntasMixtas.push(mezclarOpciones(pregunta));
+                }
+            });
+            
+            // Mezclar todas las preguntas y tomar solo 10
+            mezclarPreguntas(preguntasMixtas);
+            return preguntasMixtas.slice(0, 10);
+        }
 
         // Función para reproducir sonido
         function playSound(sound) {
@@ -1045,14 +1093,19 @@
         // Funciones del juego
         function iniciarJuego() {
             // Reiniciar variables
-            preguntasActuales = [...preguntas[categoriaActual]];
+            if (categoriaActual === 'mixta') {
+                preguntasActuales = crearCategoriaMixta();
+            } else {
+                preguntasActuales = [...preguntasBase[categoriaActual]];
+                // Mezclar las preguntas y las opciones
+                preguntasActuales = preguntasActuales.map(pregunta => mezclarOpciones(pregunta));
+                mezclarPreguntas(preguntasActuales);
+            }
+            
             preguntaActual = 0;
             puntuacion = 0;
             respuestasIncorrectas = [];
             respuestasCorrectas = 0;
-            
-            // Mezclar preguntas
-            mezclarPreguntas(preguntasActuales);
             
             // Actualizar UI
             puntajeElemento.textContent = `Puntos: ${puntuacion}`;
@@ -1081,10 +1134,10 @@
             progresoBarra.style.width = `${(preguntaActual / preguntasActuales.length) * 100}%`;
             
             // Actualizar número de pregunta
-            numeroPregunta.textContent = `${preguntaActual + 1}/10`;
+            numeroPregunta.textContent = `${preguntaActual + 1}/${preguntasActuales.length}`;
             
             // Actualizar indicador de categoría
-            categoriaIndicador.textContent = categoriaActual.toUpperCase();
+            categoriaIndicador.textContent = categoriaActual === 'mixta' ? 'MEZCLA' : categoriaActual.toUpperCase();
             
             // Obtener pregunta actual
             const pregunta = preguntasActuales[preguntaActual];
@@ -1193,9 +1246,11 @@
         function siguientePregunta() {
             preguntaActual++;
             
+            // CORRECCIÓN: Verificar si es la última pregunta
             if (preguntaActual < preguntasActuales.length) {
                 mostrarPregunta();
             } else {
+                // Si es la última pregunta, terminar el juego
                 terminarJuego();
             }
         }
@@ -1208,7 +1263,7 @@
             puntajeFinal.textContent = puntuacion;
             
             // Mostrar resumen de correctas
-            resumenCorrectas.textContent = `${respuestasCorrectas}/10 preguntas correctas`;
+            resumenCorrectas.textContent = `${respuestasCorrectas}/${preguntasActuales.length} preguntas correctas`;
             
             // Mostrar preguntas incorrectas
             mostrarErrores();
